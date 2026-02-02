@@ -1,0 +1,50 @@
+Task 2 - Grade Book System
+
+This task implements a simple grade book system using TypeScript.
+It models students, their grades in different subjects, and a grade book for a class.
+
+Files and details:
+- `Student.ts`
+  - **Class**: `Student`
+  - **Properties**:
+    - `studentId: string` – unique ID for the student.
+    - `name: string` – student full name.
+    - `email: string` – contact email.
+    - `grades: Record<string, number>` – key-value pairs of subject name to numeric grade.
+  - **Methods**:
+    - `constructor(studentId, name, email, grades)` – creates a new student with an initial grades object.
+    - `addGrade(subject: string, grade: number): void` – adds or updates a grade for a subject.
+    - `getGrade(subject: string): number | undefined` – returns the numeric grade for a subject (or `undefined` if not found).
+    - `calculateAverage(): number` – calculates the average of all grades; returns `0` if the student has no grades.
+    - `getLetterGrade(): string` – converts the numeric average into a letter grade (A+, A, A-, …, F) based on thresholds.
+    - `getStudentInfo(): void` – logs the student’s ID, name, email, grades list, average, and letter grade.
+
+- `GradeBook.ts`
+  - **Class**: `GradeBook`
+  - **Properties**:
+    - `className: string` – name of the class (e.g., "Computer Science 101").
+    - `students: Student[]` – list of enrolled students.
+  - **Methods**:
+    - `constructor(className, students = [])` – creates a grade book for a class with an optional initial student list.
+    - `addStudent(student: Student): void` – adds a student to the grade book.
+    - `removeStudent(studentId: string): boolean` – removes a student by ID and returns `true` if removed, otherwise `false`.
+    - `findStudent(studentId: string): Student | undefined` – finds and returns a student by ID (or `undefined` if not found).
+    - `getClassAverage(): number` – computes the average of all students’ averages; returns `0` if there are no students.
+    - `getTopStudents(count: number): string` – returns a comma-separated string of the names of the top N students by average grade.
+    - `displayAllStudents(): string` – returns a comma-separated string of all student names in the class.
+    - `getStudentsByLetterGrade(letterGrade: string): string` –
+      returns a comma-separated string of names for students whose letter grade matches the provided value.
+
+- `System.ts`
+  - Demonstrates how to use the above classes:
+    - Creates a `GradeBook` for a specific class.
+    - Creates several `Student` instances with empty grade objects.
+    - Adds grades per subject for each student.
+    - Adds students to the grade book.
+    - Logs all student names, class average, and top students.
+    - Shows detailed information for an individual student using `getStudentInfo()`.
+    - (Commented example) Shows how to use `getStudentsByLetterGrade()` to filter by letter grade.
+
+Usage:
+- Run/compile the TypeScript files as part of your TypeScript project setup.
+- Use `System.ts` as the entry point to interact with the grade book features and see example output.
