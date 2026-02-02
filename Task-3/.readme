@@ -1,0 +1,95 @@
+Task 3 - Vehicle Rental Management System
+
+This task implements a comprehensive vehicle rental management system using TypeScript.
+It models customers, vehicles, rentals, and a rental agency that manages the entire rental process.
+
+Files and details:
+- `Customer.ts`
+  - **Class**: `Customer`
+  - **Properties**:
+    - `customerId: string` – unique identifier for the customer.
+    - `name: string` – customer's full name.
+    - `phone: string` – contact phone number.
+    - `email: string` – contact email address.
+    - `driversLicenseNumber: string` – driver's license number for verification.
+  - **Methods**:
+    - `constructor(customerId, name, phone, email, driversLicenseNumber)` – creates a new customer instance.
+    - `getCustomerInfo(): string` – returns a formatted string with all customer details.
+
+- `Vehicle.ts`
+  - **Class**: `Vehicle`
+  - **Properties**:
+    - `vehicleId: string` – unique identifier for the vehicle.
+    - `make: string` – vehicle manufacturer (e.g., "Toyota", "Honda").
+    - `model: string` – vehicle model name (e.g., "Camry", "Accord").
+    - `year: number` – manufacturing year.
+    - `dailyRate: number` – rental cost per day.
+    - `isAvailable: boolean` – whether the vehicle is currently available for rental.
+  - **Methods**:
+    - `constructor(vehicleId, make, model, year, dailyRate, isAvailable)` – creates a new vehicle instance.
+    - `getVehicleInfo(): string` – returns a formatted string with all vehicle details including availability.
+    - `rent(): string` – marks the vehicle as unavailable if it's available; returns a success message or error.
+    - `returnVehicle(): string` – marks the vehicle as available and returns a success message.
+    - `calculateRentalCost(days: number): number` – calculates the total rental cost for a given number of days.
+
+- `Rental.ts`
+  - **Class**: `Rental`
+  - **Properties**:
+    - `rentalId: string` – unique identifier for the rental transaction.
+    - `customer: Customer` – the customer who rented the vehicle.
+    - `vehicle: Vehicle` – the vehicle being rented.
+    - `startDate: Date` – rental start date.
+    - `endDate: Date` – rental end date.
+    - `isActive: boolean` – whether the rental is currently active.
+  - **Methods**:
+    - `constructor(rentalId, customer, vehicle, startDate, endDate, isActive)` – creates a new rental instance.
+    - `getRentalDuration(): number` – calculates and returns the rental duration in days.
+    - `getTotalCost(): number` – calculates the total cost based on duration and vehicle's daily rate.
+    - `completeRental(): string` – marks the rental as inactive, makes the vehicle available again, and returns a success message.
+    - `getRentalInfo(): string` – returns a comprehensive formatted string with all rental details including customer info, vehicle info, dates, duration, cost, and status.
+
+- `RentalAgency.ts`
+  - **Class**: `RentalAgency`
+  - **Properties**:
+    - `agencyName: string` – name of the rental agency.
+    - `vehicles: Vehicle[]` – collection of vehicles managed by the agency.
+    - `customers: Customer[]` – registered customers.
+    - `rentals: Rental[]` – all rental transactions.
+  - **Methods**:
+    - `constructor(agencyName)` – initializes the agency with a name and empty arrays for vehicles, customers, and rentals.
+    - `addVehicle(vehicle: Vehicle): void` – adds a vehicle to the agency's fleet.
+    - `registerCustomer(customer: Customer): void` – registers a new customer.
+    - `getAvailableVehicles(): Vehicle[]` – returns an array of all vehicles that are currently available.
+    - `createRental(customer: Customer, vehicle: Vehicle, days: number): Rental | null` –
+      creates a new rental transaction:
+      - Ensures customer and vehicle are registered.
+      - Checks vehicle availability.
+      - Creates start and end dates based on the number of days.
+      - Generates a unique rental ID.
+      - Marks the vehicle as unavailable.
+      - Returns the created rental or `null` if vehicle is unavailable.
+    - `completeRental(rentalId: string): string` –
+      completes a rental by rental ID:
+      - Finds the rental by ID.
+      - Marks it as inactive.
+      - Makes the vehicle available again.
+      - Returns a success message or error if rental not found.
+    - `getActiveRentals(): Rental[]` – returns an array of all currently active rentals.
+    - `getCustomerRentals(customerId: string): Rental[]` – returns all rentals for a specific customer by their ID.
+    - `displayFleet(): void` – displays all vehicles in the fleet with their status (Available/Rented) in a formatted console output.
+
+- `System.ts`
+  - Demonstrates how to use the rental management system:
+    - Creates a `RentalAgency` instance.
+    - Creates and adds multiple `Vehicle` instances to the fleet.
+    - Creates and registers `Customer` instances.
+    - Displays the fleet status.
+    - Creates rental transactions for customers.
+    - Displays rental costs and fleet status after rentals.
+    - Completes a rental and shows the result.
+    - Retrieves and displays customer rental history.
+
+Usage:
+- Run/compile the TypeScript files as part of your TypeScript project setup.
+- Use `System.ts` as the entry point to interact with the vehicle rental management system and see example output.
+- The system handles vehicle availability, rental creation, rental completion, and customer rental history tracking.
