@@ -91,17 +91,4 @@ console.log("Order total:", order.total());
 
 ---
 
-## Tests
 
-No tests are included by default. Add tests with your preferred framework (Jest, Mocha, etc.).
-
----
-
-## Contributing & License
-
-- Contributions: open a PR with small, focused changes.
-- License: Add a license file if you plan to share this project publicly.
-
----
-
-If you want, I can add a `demo.ts` runner file that shows the code in action. 🔧
