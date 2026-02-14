@@ -1,4 +1,4 @@
-import { MenuItem } from "../MenuItem";
+import { MenuItem } from "../Menu/MenuItem";
 import { OrderItem } from "../OrderItem";
 
 export type OrderStatus =
