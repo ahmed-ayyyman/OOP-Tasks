@@ -1,5 +1,5 @@
 import { MenuItem } from "../Menu/MenuItem";
-import { OrderItem } from "../OrderItem";
+import { OrderItem } from "./OrderItem";
 
 export type OrderStatus =
   | "Pending"
